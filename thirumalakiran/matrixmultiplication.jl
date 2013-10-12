@@ -19,7 +19,7 @@ function matmul()
         C = zeros(m,n)
 
         #column wise and vectorized access
-	      b = time()
+	b = time()
         for r = 1:k
             C = A[:,k] * B[k,:]
         end
@@ -27,46 +27,46 @@ function matmul()
         y1[i] = a-b
 
         #column wise and non-vectorized access
-	      b = time()
+	b = time()
         for r = 1:k
-		      for p = 1:m
-		      	for q = 1:n
-		            C[p,q] = C[p,q] + A[p,k] * B[k,q]
-			      end
-		      end
+	     for p = 1:m
+	      	for q = 1:n
+	            C[p,q] = C[p,q] + A[p,k] * B[k,q]
+	        end
+	     end
         end
         a = time()
-	      y2[i] = a-b
+	y2[i] = a-b
 
         #row wise and vectorized access
-	      b = time()
+	b = time()
         for p = 1:m
-		      for q = 1:n
+	      for q = 1:n
 	            C[p,q] = (A[p,:] * B[:,q])[1]
-		      end        
-	      end
+	      end        
+	end
         a = time()
         y3[i] = a-b
 
         #row wise and non-vectorized access
-    	  b = time()    
-	      for p = 1:m
-		      for q = 1:n
-			      for r = 1:k
+    	b = time()    
+	for p = 1:m
+	      for q = 1:n
+		      for r = 1:k
 		            C[p,q] = C[p,q] + A[p,k] * B[k,q]
-			      end
 		      end
+	      end
         end
         a = time()
-	      y4[i] = a-b
+	y4[i] = a-b
 
     end
     
     #Plot the observastions
     p = FramedPlot()
-  	setattr(p, "title", "col vec in red vs col in blue vs row vec in green vs row in brown")
-	  setattr(p, "xlabel", "exp no. (input size = exp no * 100)")
-	  setattr(p, "ylabel", "timetaken in seconds")
+    setattr(p, "title", "col vec in red vs col in blue vs row vec in green vs row in brown")
+    setattr(p, "xlabel", "exp no. (input size = exp no * 100)")
+    setattr(p, "ylabel", "timetaken in seconds")
     add(p, Curve(x, y1,"color", "red"))  #column wise and vectorized access
     add(p, Curve(x, y2,"color", "blue")) #column wise and non-vectorized access
     add(p, Curve(x, y3,"color", "green")) #row wise and vectorized access
