@@ -21,11 +21,12 @@ function matmul()
         #column wise and vectorized access
 	b = time()
         for r = 1:k
-            C = A[:,k] * B[k,:]
+            C = C + A[:,k] * B[k,:]
         end
         a = time()
         y1[i] = a-b
 
+ 	C = zeros(m,n)
         #column wise and non-vectorized access
 	b = time()
         for r = 1:k
@@ -38,6 +39,7 @@ function matmul()
         a = time()
 	y2[i] = a-b
 
+        C = zeros(m,n)
         #row wise and vectorized access
 	b = time()
         for p = 1:m
@@ -48,6 +50,7 @@ function matmul()
         a = time()
         y3[i] = a-b
 
+        C = zeros(m,n)
         #row wise and non-vectorized access
     	b = time()    
 	for p = 1:m
