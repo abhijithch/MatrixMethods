@@ -2,6 +2,7 @@
 
     function matmul(val)
         
+        #initializing variables for plotting
         x = convert(Array{Float64,1}, [1:10])
         y1 = zeros(Float64,10)
         y2 = zeros(Float64,10)
@@ -9,7 +10,10 @@
         y4 = zeros(Float64,10)
         
         for i = 1 : 10        
-            m = n = k = i * val    
+            #size of the matrix
+            m = n = k = i * val  
+            
+            #initialize the matrix A, B
             A = rand(m,k)
             B = rand(k,n)
                         
@@ -84,6 +88,7 @@
 
         l = Legend( .1, .9, {y1curve, y2curve, y3curve, y4curve} )
         add(p, y1curve, y2curve, y3curve, y4curve, l)          
+        
         Winston.display(p)
         file(p, "matrix_multiplication.png")
     end
