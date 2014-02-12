@@ -25,8 +25,8 @@ function readData()
     #source can be a text file, stream or byte array. Memory mapped files 
     #can be used by passing the byte array representation of the mapped 
     #segment as source.
-	training = readdlm("/home/thiruk/JuliaREC/ml-100k/u1.base",'\t';has_header=false)
-	test = readdlm("/home/thiruk/JuliaREC/ml-100k/u1.test",'\t';has_header=false)
+	training = readdlm("../data/train.txt",'\t';has_header=false)
+	test = readdlm("../data/test.txt",'\t';has_header=false)
 	println("size of training data", size(training))
 	println("size of test data", size(test))
 	return (training,test)
