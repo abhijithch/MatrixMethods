@@ -5,6 +5,8 @@ This repository if for the examples and assignments for the course in Basic Matr
 
 Directory Structure
 
+
+<p>
 ├── Julia_Useful_Links.md
 ├── notes1.pdf
 ├── README.md
@@ -23,4 +25,10 @@ Directory Structure
     ├── Matrix_Multiplication.jl
     ├── Palindrome_detection.jl
     └── Reduced_row_echelon_form.jl
-
+</p>
+B
+D
+<>
+A
+D
+<>
